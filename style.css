@@ -1,0 +1,189 @@
+
+/* COLOR PALETTE */
+body {
+    --light: #D9D9D9;
+    --dark: #01161E;
+
+    --primary: #D32A2A;
+    --secondary: #124559;
+    --tertiary: #598392;
+
+
+    background-color: var(--light);
+    color: var(--dark);
+
+    font-family: 'Almarai', sans-serif;
+    font-size: 36px;
+}
+
+@media only screen and (max-width: 991px) {
+    body {
+        font-size: 24px;
+    }
+
+}
+
+a {
+    color: var(--primary);
+    filter:brightness(75%);
+}
+
+
+
+/* CSS START */
+
+.title {
+    text-align: center;
+    font-size: xx-large;
+}
+
+.picture-title {
+    align-items: center;
+}
+
+@media only screen and (max-width: 991px) {
+    #desktop-header {
+        display: none;
+    }
+
+}
+
+.picture-title * {
+    --negative-margin: 0;
+    margin-left: var(--negative-margin);
+    margin-right: var(--negative-margin);
+}
+.picture-title * img {
+    width: 25vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* 4th picture causes horizontal scroll */
+
+.picture-title:last-child {
+    display: none;
+}
+/* TODO title logo has issues */
+
+.title-logo {
+    border-radius: 5px;
+    border: 1px solid white;
+    background-color: white;
+    height: 13vh;
+    width: 40vw;
+    top: 66vh;
+    left: 10vw;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: black;
+    font-size: xx-large;
+
+}
+
+.title-logo img {
+    object-fit: scale-down;
+}
+
+.mobile-header {
+    text-align: center;
+    font-size: xx-large;
+    background-color: var(--primary);
+    flex-direction: column;
+}
+
+.socials-holder {
+    /* background-color: var(--secondary); */
+    height: 20vh;
+    display: flex;
+}
+
+@media only screen and (max-width: 991px) {
+    .socials-holder {
+        /* background-color: var(--secondary); */
+        height: 10vh;
+        display: flex;
+    }
+
+}
+
+.socials-holder div {
+
+    text-align: center;
+
+    --y-padding: 2vh;
+    --actual-width: calc(100vw / 5);
+    --x-padding-adjust: calc(var(--actual-width) / 2);
+    
+    
+    padding-top: var(--y-padding);
+    padding-bottom: var(--y-padding);
+    object-fit: scale-down;
+    
+    /* make the width 1 6th of the total screen width and have padding inside evenly */
+    width: var(--actual-width);
+    /* padding-left: var(--x-padding-adjust); */
+    /* padding-right: var(--x-padding-adjust); */
+    
+}
+
+
+
+.socials-holder img {
+    height: 100%;
+}
+
+.socials-holder img:hover {
+    scale: 1.05;
+}
+
+.make-black {
+    filter:brightness(0);
+    /* USED TO MAKE SPOTIFY LOGO BLACK */
+}
+
+.info-panel {
+    padding-left: 7rem;
+    padding-right: 2rem;
+}
+
+/* TODO REMOVE IF WORKING IN BODY */
+
+/* .bio {
+    font-size: 36px;
+}
+
+@media only screen and (max-width: 991px) {
+    .bio {
+        font-size: 24px;
+    }
+
+} */
+
+.bio .bio-title {
+    font-size: 64px;
+}
+
+.spotify {
+    width: 100%;
+    height: 500px;
+    background-color: #124559;
+}
+
+.youtube {
+    width: 100%;
+    height: 315px;
+}
+
+.press-photos div {
+    text-align: center;
+}
+
+.press-photos img {
+    width: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+
+}
