@@ -51,13 +51,6 @@ a {
     align-items: center;
 }
 
-@media only screen and (max-width: 991px) {
-    #desktop-header {
-        display: none;
-    }
-
-}
-
 .picture-title * {
     --negative-margin: 0;
     margin-left: var(--negative-margin);
@@ -69,7 +62,19 @@ a {
     object-fit: cover;
 }
 
-/* 4th picture causes horizontal scroll */
+@media only screen and (max-width: 991px) {
+    .picture-title * img {
+        width: 25vw;
+        height: 25vh;
+        object-fit: cover;
+    }
+    #placeholder-logo {
+        display: none;
+    }
+
+}
+
+
 
 .picture-title:last-child {
     display: none;
