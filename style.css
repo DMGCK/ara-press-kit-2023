@@ -14,62 +14,43 @@ body {
     color: var(--dark);
 
     font-family: 'Almarai', sans-serif;
-    font-size: 36px;
-}
+    font-size: 30px;
 
-@media only screen and (max-width: 991px) {
-    body {
-        font-size: 24px;
+    @media only screen and (max-width: 800px) {
+        font-size: 20px;
     }
-
 }
 
+
+/* CSS START */
 a {
     color: var(--primary);
     filter:brightness(75%);
 }
 
-
-
-/* CSS START */
-
-.custom-bottom {
-
-    background-color: var(--tertiary);
-}
-
-.custom-bottom img {
-    max-height: 5vh;
-}
-
-.title {
-    text-align: center;
-    font-size: xx-large;
-}
-
 .picture-title {
     align-items: center;
+
+    & * {
+        --negative-margin: 0;
+        margin-left: var(--negative-margin);
+        margin-right: var(--negative-margin);
+    }
+    & * img {
+        width: 25vw;
+        height: 100vh;
+        object-fit: cover;
+    }
 }
 
-.picture-title * {
-    --negative-margin: 0;
-    margin-left: var(--negative-margin);
-    margin-right: var(--negative-margin);
-}
-.picture-title * img {
-    width: 25vw;
-    height: 100vh;
-    object-fit: cover;
-}
-
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 800px) {
     .picture-title * img {
         width: 25vw;
         height: 25vh;
         object-fit: cover;
     }
     #placeholder-logo {
-        display: none;
+        top: 12vh;
     }
 
 }
@@ -82,13 +63,13 @@ a {
 /* TODO title logo has issues */
 
 .title-logo {
+    height: 0;
     border-radius: 5px;
-    border: 1px solid white;
-    background-color: white;
-    height: 13vh;
-    width: 40vw;
-    top: 66vh;
-    left: 10vw;
+    /* border: 1px solid white; */
+    /* background-color: white; */
+    width: 60vw;
+    top: 50vh;
+    left: 5vw;
 
     display: flex;
     flex-direction: column;
@@ -96,10 +77,16 @@ a {
     color: black;
     font-size: xx-large;
 
-}
+    & img {
+        object-fit: fill;
+        width: 50vw;
+    }
 
-.title-logo img {
-    object-fit: scale-down;
+    /* TODO doesn't work, trying to make a nice high contrast double */
+    & img::before {
+        rotate: 90deg;
+        filter: brightness(50);
+    }
 }
 
 .mobile-header {
@@ -113,43 +100,33 @@ a {
     background-color: var(--gray);
     height: 15vh;
     display: flex;
-}
-
-@media only screen and (max-width: 991px) {
-    .socials-holder {
+    
+    @media only screen and (max-width: 800px) {
         height: 10vh;
         display: flex;
     }
 
-}
-
-.socials-holder div {
-    
-
+    & div {
     text-align: center;
 
     --y-padding: 2vh;
     --actual-width: calc(100vw / 6);
     --x-padding-adjust: calc(var(--actual-width) / 2);
     
-    
     padding-top: var(--y-padding);
     padding-bottom: var(--y-padding);
     object-fit: scale-down;
 
     width: var(--actual-width);
+    }
 
-    
-}
+    & img {
+        height: 100%;
+    }
 
-
-
-.socials-holder img {
-    height: 100%;
-}
-
-.socials-holder img:hover {
-    scale: 1.05;
+    & img:hover {
+        scale: 1.05;
+    }
 }
 
 .make-black {
@@ -162,41 +139,165 @@ a {
     padding-right: 2rem;
 }
 
-/* TODO REMOVE IF WORKING IN BODY */
+.bio {
 
-/* .bio {
-    font-size: 36px;
-}
-
-@media only screen and (max-width: 991px) {
-    .bio {
-        font-size: 24px;
+    & .bio-title {
+        font-size: 64px;
     }
 
-} */
+    & .show {
 
-.bio .bio-title {
-    font-size: 64px;
-}
+        font-size: medium;
+        
+        & b {
+            text-align: start;
+            font-size: x-large;
+        }
+        
+        & .show-grid {
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        & .lineup {
+            font-style: italic;
+        }
+    }
+
+} 
 
 .spotify {
     width: 100%;
-    height: 20em;
+    height: 15em;
     background-color: #124559;
 }
 
-.youtube {
-    width: 100%;
-    height: 315px;
+.youtube-container {
+    container-type: inline-size;
 }
 
-.press-photos div {
+@container (width < 800000px) {
+    .youtube {
+        --aspect-ratio-x: 100cqw;
+        --aspect-ratio-y: calc( 9 * calc( var(--aspect-ratio-x) / 16));
+    
+        height: var(--aspect-ratio-y);
+        width: var(--aspect-ratio-x); 
+    }
+}
+
+.press-photos {
     text-align: center;
-}
+    container-type: inline-size;
 
-.press-photos img {
-    width: 100%;
-    max-height: 50vh;
-    object-fit: cover;
+    & .press-photos-grid {
 
+        @container (width <= 800px) {
+            display:grid;
+            grid-template-columns:repeat(2, 1fr);
+            grid-template-rows: repeat(6, 60vh);
+            grid-gap: 15px;
+
+            & div:nth-child(5) {
+                /* Danny tongue out emo night */
+                grid-column: 1 /span 2;
+            }
+
+            & div:nth-child(3) {
+                /* Cam crowd Emo Night */
+                grid-column: 1 /span 2;
+            }
+
+            & div:nth-child(4) {
+                /* double guitar knit show */
+                display:none;
+            }
+            & div:nth-child(6) {
+                /* alex is photogenic 1 */
+                grid-column: 1 /span 2;
+            }
+        }
+
+        @container (width > 800px) {
+
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(22, 5vw);
+            grid-gap: 15px;
+    
+    
+            & div:nth-child(1) {
+                /* Danny Smiling EMO NIGHT */
+                /* origin 1,1  end 4,7 */
+                grid-column: 1 / span 3;  
+                grid-row: 1 / span 6;
+            }
+    
+            & div:nth-child(2) {
+                /* Josh Dark And Gloomy Knit */
+                /* origin 4,1   end 6,7 */
+                grid-column: 4 /span 2;
+                grid-row: 1 / span 6;
+            }
+    
+            & div:nth-child(3) {
+                /* ORIGIN 6, 1 END 9, 7 */
+                /* Cam crowd Emo Night */
+                grid-column: 6 /span 3;
+                grid-row: 1 / span 6;
+            }
+            
+            & div:nth-child(5) {
+                /* origin 1,7   end 9,11 */
+                /* Danny tongue out emo night */
+                grid-column: 1 /span 8;
+                grid-row: 7 / span 4;
+            }
+            
+            & div:nth-child(4) {
+                /* origin 1,11   end 7,17 */
+                /* double guitar knit show */
+                grid-column: 1 /span 6;
+                grid-row: 11 / span 6;
+            }
+    
+            & div:nth-child(6) {
+                /* origin 7,11   end 8,17 */
+                /* alex is photogenic 1 */
+                grid-column: 7 /span 2;
+                grid-row: 11 / span 6;
+            }
+            & div:nth-child(7) {
+                /* origin 1,17   end 2,23 */
+                /* danny is photogenic 1 */
+                grid-column: 1 /span 2;
+                grid-row: 17 / span 6;
+            }
+            & div:nth-child(8) {
+                /* origin 3,17   end 4,23 */
+                /* alex is photogenic 2 */
+                grid-column: 3 /span 2;
+                grid-row: 17 / span 6;
+            }
+            & div:nth-child(9) {
+                /* origin 5,17   end 6,23 */
+                /* josh is photogenic 1 */
+                grid-column: 5 /span 2;
+                grid-row: 17 / span 6;
+            }
+            & div:nth-child(10) {
+                /* origin 7,17   end 8,23 */
+                /* cam is photogenic 1 */
+                grid-column: 7 /span 2;
+                grid-row: 17 / span 6;
+            }
+        }
+    }
+
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
