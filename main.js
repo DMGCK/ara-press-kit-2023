@@ -1,1 +1,2 @@
 // api call from aws
+(() => {})();
